@@ -436,6 +436,39 @@ Discarded input sections
  .text          0x00000000        0x0 ./system/src/cmsis/vectors_stm32f401xc.o
  .data          0x00000000        0x0 ./system/src/cmsis/vectors_stm32f401xc.o
  .bss           0x00000000        0x0 ./system/src/cmsis/vectors_stm32f401xc.o
+ .text          0x00000000        0x0 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .data          0x00000000        0x0 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .bss           0x00000000        0x0 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .text.Scheduler
+                0x00000000       0x38 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .text.RTOS_u8CreateTask
+                0x00000000       0x34 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .text.RTOS_u8DeleteTask
+                0x00000000       0x28 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .text.RTOS_u8SuspendTask
+                0x00000000       0x14 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .text.RTOS_u8ResumeTask
+                0x00000000       0x14 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .text.RTOS_vStartOS
+                0x00000000       0x10 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .bss.Empty_TaskSystem
+                0x00000000        0x8 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .bss.SystemTasks
+                0x00000000       0xa0 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .bss.TaskTiming
+                0x00000000       0x14 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_info    0x00000000      0x2f6 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_abbrev  0x00000000      0x1ae ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_loc     0x00000000      0x1ca ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_aranges
+                0x00000000       0x40 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_ranges  0x00000000       0x30 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_line    0x00000000      0x165 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_str     0x00000000      0x357 ./src/COTS/MyRTOS/MyRTOS_program.o
+ .comment       0x00000000       0x7f ./src/COTS/MyRTOS/MyRTOS_program.o
+ .debug_frame   0x00000000       0x8c ./src/COTS/MyRTOS/MyRTOS_program.o
+ .ARM.attributes
+                0x00000000       0x33 ./src/COTS/MyRTOS/MyRTOS_program.o
  .text          0x00000000        0x0 ./src/COTS/MCAL/TIM1/TIM1_program.o
  .data          0x00000000        0x0 ./src/COTS/MCAL/TIM1/TIM1_program.o
  .bss           0x00000000        0x0 ./src/COTS/MCAL/TIM1/TIM1_program.o
@@ -710,6 +743,7 @@ LOAD ./system/src/cortexm/_reset_hardware.o
 LOAD ./system/src/cortexm/exception_handlers.o
 LOAD ./system/src/cmsis/system_stm32f4xx.o
 LOAD ./system/src/cmsis/vectors_stm32f401xc.o
+LOAD ./src/COTS/MyRTOS/MyRTOS_program.o
 LOAD ./src/COTS/MCAL/TIM1/TIM1_program.o
 LOAD ./src/COTS/MCAL/SysTick/SysTick_program.o
 LOAD ./src/COTS/MCAL/RCC/MRCC_program.o

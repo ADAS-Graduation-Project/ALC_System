@@ -37,6 +37,7 @@ src/COTS/MCAL/NVIC \
 src/COTS/MCAL/RCC \
 src/COTS/MCAL/SysTick \
 src/COTS/MCAL/TIM1 \
+src/COTS/MyRTOS \
 src \
 system/src/cmsis \
 system/src/cortexm \
