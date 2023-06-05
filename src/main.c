@@ -66,17 +66,21 @@ int main( void )
 		/* Out the conversion value on the TIM1_CH3 */
 		MTIM1_vSetCompareReg3Value( L_u16BrightnessLevel ) ;
 
+		/* Display brightness bar */
+		HLCD_vDispBrightnessBar( L_u16BrightnessLevel ) ;
+
 		/* Delay 1ms */
-		MSysTick_vDelayMilliSec( 1 ) ;
+		MSysTick_vDelayMilliSec( 60 ) ;
 
 		/* Clear the old ADC conversion value */
 		HLCD_vClearChar( HLCD_LINE1, HLCD_Square4 ) ;
 		HLCD_vClearChar( HLCD_LINE1, HLCD_Square5 ) ;
 		HLCD_vClearChar( HLCD_LINE1, HLCD_Square6 ) ;
 		HLCD_vClearChar( HLCD_LINE1, HLCD_Square7 ) ;
+		HLCD_vClear2ndRow( ) ;
 
 		/* Delay 1ms */
-		MSysTick_vDelayMilliSec( 1 ) ;
+		MSysTick_vDelayMilliSec( 10 ) ;
 
 	}
 

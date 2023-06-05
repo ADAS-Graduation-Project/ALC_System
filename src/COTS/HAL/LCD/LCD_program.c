@@ -479,15 +479,390 @@ void HLCD_vClearChar( u8_t A_u8Row, u8_t A_u8Col )
 	HLCD_vSendData( ' ' ) ;
 
 }
+/**************************************************************************************************************/
+/*************************************************************************************************************/
+
+void HLCD_vClear1stRow( void )
+{
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square1  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square2  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square3  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square4  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square5  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square6  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square7  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square8  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square9  ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square10 ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square11 ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square12 ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square13 ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square14 ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square15 ) ;
+	HLCD_vClearChar( HLCD_LINE1, HLCD_Square16 ) ;
+}
 
 /**************************************************************************************************************/
 /*************************************************************************************************************/
 
+void HLCD_vClear2ndRow( void )
+{
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square1  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square2  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square3  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square4  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square5  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square6  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square7  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square8  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square9  ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square10 ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square11 ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square12 ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square13 ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square14 ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square15 ) ;
+	HLCD_vClearChar( HLCD_LINE2, HLCD_Square16 ) ;
+}
 
+/**************************************************************************************************************/
+/*************************************************************************************************************/
 
+void HLCD_vDispBrightnessBar( u16_t A_u16BrightnessLevel )
+{
 
+	if( A_u16BrightnessLevel == 0 )
+	{
+		HLCD_vClear2ndRow( ) ;
+	}
+	else if( (A_u16BrightnessLevel > 0) && (A_u16BrightnessLevel < 250) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 250) && (A_u16BrightnessLevel < 500) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 500) && (A_u16BrightnessLevel < 750) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 750) && (A_u16BrightnessLevel < 1000) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 1000) && (A_u16BrightnessLevel < 1250) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 1250) && (A_u16BrightnessLevel < 1500) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 1500) && (A_u16BrightnessLevel < 1750) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 1750) && (A_u16BrightnessLevel < 2000) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 2000) && (A_u16BrightnessLevel < 2250) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 2250) && (A_u16BrightnessLevel < 2500) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square10 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 2500) && (A_u16BrightnessLevel < 2750) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square10 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square11 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 2750) && (A_u16BrightnessLevel < 3000) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square10 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square11 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square12 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 3000) && (A_u16BrightnessLevel < 3250) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square10 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square11 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square12 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square13 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 3250) && (A_u16BrightnessLevel < 3500) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square10 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square11 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square12 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square13 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square14 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( (A_u16BrightnessLevel >= 3500) && (A_u16BrightnessLevel < 3750) )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square10 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square11 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square12 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square13 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square14 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square15 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else if( A_u16BrightnessLevel >= 3750 )
+	{
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square1 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square2 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square3 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square4 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square5 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square6 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square7 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square8 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square9 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square10 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square11 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square12 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square13 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square14 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square15 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+		HLCD_vGoTo( HLCD_LINE2, HLCD_Square16 ) ;
+		HLCD_vSendData( DISP_SQUARE ) ;
+	}
+	else
+	{
+		/* Do nothing */
+	}
 
+}
 
-
+/**************************************************************************************************************/
+/*************************************************************************************************************/
 
 

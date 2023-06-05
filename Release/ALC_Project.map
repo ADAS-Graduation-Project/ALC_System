@@ -658,6 +658,8 @@ Discarded input sections
                 0x00000000       0x1c ./src/COTS/HAL/LCD/LCD_program.o
  .text.HLCD_vDispShiftLeftString
                 0x00000000       0x3a ./src/COTS/HAL/LCD/LCD_program.o
+ .text.HLCD_vClear1stRow
+                0x00000000       0x86 ./src/COTS/HAL/LCD/LCD_program.o
  .text          0x00000000        0x0 ./src/_initialize_hardware.o
  .data          0x00000000        0x0 ./src/_initialize_hardware.o
  .bss           0x00000000        0x0 ./src/_initialize_hardware.o
@@ -859,10 +861,10 @@ END GROUP
 
 .inits          0x080002c8       0x28
                 0x080002c8                __data_regions_array_start = .
-                0x080002c8        0x4 LONG 0x8001268 LOADADDR (.data)
+                0x080002c8        0x4 LONG 0x8001964 LOADADDR (.data)
                 0x080002cc        0x4 LONG 0x20000000 ADDR (.data)
                 0x080002d0        0x4 LONG 0x20000010 (ADDR (.data) + SIZEOF (.data))
-                0x080002d4        0x4 LONG 0x8001268 LOADADDR (.data_CCMRAM)
+                0x080002d4        0x4 LONG 0x8001964 LOADADDR (.data_CCMRAM)
                 0x080002d8        0x4 LONG 0x10000000 ADDR (.data_CCMRAM)
                 0x080002dc        0x4 LONG 0x10000000 (ADDR (.data_CCMRAM) + SIZEOF (.data_CCMRAM))
                 0x080002e0                __data_regions_array_end = .
@@ -894,7 +896,7 @@ END GROUP
 .flashtext
  *(.flashtext .flashtext.*)
 
-.text           0x080002f0      0xf78
+.text           0x080002f0     0x1674
  *(.text .text.*)
  .text._exit    0x080002f0        0x6 ./system/src/newlib/_exit.o
                 0x080002f0                _exit
@@ -1020,54 +1022,60 @@ END GROUP
  .text.HLCD_vClearChar
                 0x0800119a       0x10 ./src/COTS/HAL/LCD/LCD_program.o
                 0x0800119a                HLCD_vClearChar
+ .text.HLCD_vClear2ndRow
+                0x080011aa       0x86 ./src/COTS/HAL/LCD/LCD_program.o
+                0x080011aa                HLCD_vClear2ndRow
+ .text.HLCD_vDispBrightnessBar
+                0x08001230      0x66e ./src/COTS/HAL/LCD/LCD_program.o
+                0x08001230                HLCD_vDispBrightnessBar
  .text.__initialize_hardware
-                0x080011aa        0x2 ./src/_initialize_hardware.o
-                0x080011aa                __initialize_hardware
+                0x0800189e        0x2 ./src/_initialize_hardware.o
+                0x0800189e                __initialize_hardware
  .text.startup.main
-                0x080011ac       0x9c ./src/main.o
-                0x080011ac                main
+                0x080018a0       0xa4 ./src/main.o
+                0x080018a0                main
  *(.rodata .rodata.* .constdata .constdata.*)
- .rodata        0x08001248       0x1c ./src/COTS/MCAL/TIM1/TIM1_program.o
+ .rodata        0x08001944       0x1c ./src/COTS/MCAL/TIM1/TIM1_program.o
  .rodata.main.str1.1
-                0x08001264        0x4 ./src/main.o
+                0x08001960        0x4 ./src/main.o
  *(vtable)
  *(.eh_frame*)
  *(.glue_7)
- .glue_7        0x08001268        0x0 linker stubs
+ .glue_7        0x08001964        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08001268        0x0 linker stubs
+ .glue_7t       0x08001964        0x0 linker stubs
 
-.vfp11_veneer   0x08001268        0x0
- .vfp11_veneer  0x08001268        0x0 linker stubs
+.vfp11_veneer   0x08001964        0x0
+ .vfp11_veneer  0x08001964        0x0 linker stubs
 
-.v4_bx          0x08001268        0x0
- .v4_bx         0x08001268        0x0 linker stubs
+.v4_bx          0x08001964        0x0
+ .v4_bx         0x08001964        0x0 linker stubs
 
-.iplt           0x08001268        0x0
- .iplt          0x08001268        0x0 ./system/src/newlib/_exit.o
+.iplt           0x08001964        0x0
+ .iplt          0x08001964        0x0 ./system/src/newlib/_exit.o
 
-.rel.dyn        0x08001268        0x0
- .rel.iplt      0x08001268        0x0 ./system/src/newlib/_exit.o
+.rel.dyn        0x08001964        0x0
+ .rel.iplt      0x08001964        0x0 ./system/src/newlib/_exit.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08001268                . = ALIGN (0x4)
-                0x08001268                __exidx_start = .
+                0x08001964                . = ALIGN (0x4)
+                0x08001964                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08001268                __exidx_end = .
-                0x08001268                . = ALIGN (0x4)
-                0x08001268                _etext = .
-                0x08001268                __etext = .
+                0x08001964                __exidx_end = .
+                0x08001964                . = ALIGN (0x4)
+                0x08001964                _etext = .
+                0x08001964                __etext = .
 
-.data_CCMRAM    0x10000000        0x0 load address 0x08001268
+.data_CCMRAM    0x10000000        0x0 load address 0x08001964
  FILL mask 0xff
  *(.data.CCMRAM .data.CCMRAM.*)
                 0x10000000                . = ALIGN (0x4)
-                0x08001268                _sidata = LOADADDR (.data)
+                0x08001964                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x10 load address 0x08001268
+.data           0x20000000       0x10 load address 0x08001964
  FILL mask 0xff
                 0x20000000                _sdata = .
                 0x20000000                __data_start__ = .
@@ -1085,7 +1093,7 @@ END GROUP
                 0x20000010                _edata = .
                 0x20000010                __data_end__ = .
 
-.igot.plt       0x20000010        0x0 load address 0x08001278
+.igot.plt       0x20000010        0x0 load address 0x08001974
  .igot.plt      0x20000010        0x0 ./system/src/newlib/_exit.o
 
 .bss_CCMRAM     0x10000000        0x0
@@ -1250,7 +1258,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x580
+.debug_aranges  0x00000000      0x598
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 ./system/src/newlib/_exit.o
@@ -1285,16 +1293,16 @@ END GROUP
  .debug_aranges
                 0x00000488       0x28 ./src/COTS/HAL/LDR/LDR_program.o
  .debug_aranges
-                0x000004b0       0x88 ./src/COTS/HAL/LCD/LCD_program.o
+                0x000004b0       0xa0 ./src/COTS/HAL/LCD/LCD_program.o
  .debug_aranges
-                0x00000538       0x28 ./src/_initialize_hardware.o
+                0x00000550       0x28 ./src/_initialize_hardware.o
  .debug_aranges
-                0x00000560       0x20 ./src/main.o
+                0x00000578       0x20 ./src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x7a96
+.debug_info     0x00000000     0xb4c1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x960 ./system/src/newlib/_exit.o
  .debug_info    0x00000960      0x457 ./system/src/newlib/_startup.o
@@ -1312,11 +1320,11 @@ END GROUP
  .debug_info    0x00005b89      0x2fd ./src/COTS/MCAL/ADC/ADC_program.o
  .debug_info    0x00005e86      0x100 ./src/COTS/HAL/LDR/LDR_config.o
  .debug_info    0x00005f86      0x17f ./src/COTS/HAL/LDR/LDR_program.o
- .debug_info    0x00006105      0x9bb ./src/COTS/HAL/LCD/LCD_program.o
- .debug_info    0x00006ac0      0xcfa ./src/_initialize_hardware.o
- .debug_info    0x000077ba      0x2dc ./src/main.o
+ .debug_info    0x00006105     0x43b2 ./src/COTS/HAL/LCD/LCD_program.o
+ .debug_info    0x0000a4b7      0xcfa ./src/_initialize_hardware.o
+ .debug_info    0x0000b1b1      0x310 ./src/main.o
 
-.debug_abbrev   0x00000000     0x1cf2
+.debug_abbrev   0x00000000     0x1d36
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x210 ./system/src/newlib/_exit.o
  .debug_abbrev  0x00000210      0x1bf ./system/src/newlib/_startup.o
@@ -1334,11 +1342,11 @@ END GROUP
  .debug_abbrev  0x000015ae      0x149 ./src/COTS/MCAL/ADC/ADC_program.o
  .debug_abbrev  0x000016f7       0x6f ./src/COTS/HAL/LDR/LDR_config.o
  .debug_abbrev  0x00001766       0xe2 ./src/COTS/HAL/LDR/LDR_program.o
- .debug_abbrev  0x00001848      0x1d7 ./src/COTS/HAL/LCD/LCD_program.o
- .debug_abbrev  0x00001a1f      0x231 ./src/_initialize_hardware.o
- .debug_abbrev  0x00001c50       0xa2 ./src/main.o
+ .debug_abbrev  0x00001848      0x21b ./src/COTS/HAL/LCD/LCD_program.o
+ .debug_abbrev  0x00001a63      0x231 ./src/_initialize_hardware.o
+ .debug_abbrev  0x00001c94       0xa2 ./src/main.o
 
-.debug_line     0x00000000     0x218c
+.debug_line     0x00000000     0x263a
  *(.debug_line)
  .debug_line    0x00000000      0x1ca ./system/src/newlib/_exit.o
  .debug_line    0x000001ca      0x131 ./system/src/newlib/_startup.o
@@ -1356,11 +1364,11 @@ END GROUP
  .debug_line    0x0000179a      0x187 ./src/COTS/MCAL/ADC/ADC_program.o
  .debug_line    0x00001921       0xa7 ./src/COTS/HAL/LDR/LDR_config.o
  .debug_line    0x000019c8      0x100 ./src/COTS/HAL/LDR/LDR_program.o
- .debug_line    0x00001ac8      0x2f9 ./src/COTS/HAL/LCD/LCD_program.o
- .debug_line    0x00001dc1      0x22c ./src/_initialize_hardware.o
- .debug_line    0x00001fed      0x19f ./src/main.o
+ .debug_line    0x00001ac8      0x79d ./src/COTS/HAL/LCD/LCD_program.o
+ .debug_line    0x00002265      0x22c ./src/_initialize_hardware.o
+ .debug_line    0x00002491      0x1a9 ./src/main.o
 
-.debug_frame    0x00000000      0xaa4
+.debug_frame    0x00000000      0xb08
  *(.debug_frame)
  .debug_frame   0x00000000       0x40 ./system/src/newlib/_exit.o
  .debug_frame   0x00000040       0x80 ./system/src/newlib/_startup.o
@@ -1377,11 +1385,11 @@ END GROUP
  .debug_frame   0x00000644      0x150 ./src/COTS/MCAL/EXTI/EXTI_program.o
  .debug_frame   0x00000794       0xc0 ./src/COTS/MCAL/ADC/ADC_program.o
  .debug_frame   0x00000854       0x3c ./src/COTS/HAL/LDR/LDR_program.o
- .debug_frame   0x00000890      0x1a8 ./src/COTS/HAL/LCD/LCD_program.o
- .debug_frame   0x00000a38       0x44 ./src/_initialize_hardware.o
- .debug_frame   0x00000a7c       0x28 ./src/main.o
+ .debug_frame   0x00000890      0x20c ./src/COTS/HAL/LCD/LCD_program.o
+ .debug_frame   0x00000a9c       0x44 ./src/_initialize_hardware.o
+ .debug_frame   0x00000ae0       0x28 ./src/main.o
 
-.debug_str      0x00000000     0x1bc2
+.debug_str      0x00000000     0x1c13
  *(.debug_str)
  .debug_str     0x00000000      0x572 ./system/src/newlib/_exit.o
                                 0x5e3 (size before relaxing)
@@ -1415,14 +1423,14 @@ END GROUP
                                 0x1e0 (size before relaxing)
  .debug_str     0x000017d8       0x5b ./src/COTS/HAL/LDR/LDR_program.o
                                 0x251 (size before relaxing)
- .debug_str     0x00001833      0x1b1 ./src/COTS/HAL/LCD/LCD_program.o
-                                0x3bd (size before relaxing)
- .debug_str     0x000019e4      0x1bb ./src/_initialize_hardware.o
+ .debug_str     0x00001833      0x202 ./src/COTS/HAL/LCD/LCD_program.o
+                                0x414 (size before relaxing)
+ .debug_str     0x00001a35      0x1bb ./src/_initialize_hardware.o
                                 0x877 (size before relaxing)
- .debug_str     0x00001b9f       0x23 ./src/main.o
-                                0x29f (size before relaxing)
+ .debug_str     0x00001bf0       0x23 ./src/main.o
+                                0x2c9 (size before relaxing)
 
-.debug_loc      0x00000000     0x15ed
+.debug_loc      0x00000000     0x2b71
  *(.debug_loc)
  .debug_loc     0x00000000       0x21 ./system/src/newlib/_exit.o
  .debug_loc     0x00000021      0x22d ./system/src/newlib/_startup.o
@@ -1434,8 +1442,8 @@ END GROUP
  .debug_loc     0x0000080f      0x80c ./src/COTS/MCAL/GPIO/GPIO_program.o
  .debug_loc     0x0000101b      0x231 ./src/COTS/MCAL/EXTI/EXTI_program.o
  .debug_loc     0x0000124c       0x42 ./src/COTS/MCAL/ADC/ADC_program.o
- .debug_loc     0x0000128e      0x340 ./src/COTS/HAL/LCD/LCD_program.o
- .debug_loc     0x000015ce       0x1f ./src/main.o
+ .debug_loc     0x0000128e     0x18c4 ./src/COTS/HAL/LCD/LCD_program.o
+ .debug_loc     0x00002b52       0x1f ./src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1453,7 +1461,7 @@ END GROUP
  *(.debug_varnames)
 OUTPUT(ALC_Project.elf elf32-littlearm)
 
-.debug_ranges   0x00000000      0x548
+.debug_ranges   0x00000000      0x590
  .debug_ranges  0x00000000       0x18 ./system/src/newlib/_exit.o
  .debug_ranges  0x00000018       0xd0 ./system/src/newlib/_startup.o
  .debug_ranges  0x000000e8       0x20 ./system/src/newlib/_syscalls.o
@@ -1469,6 +1477,6 @@ OUTPUT(ALC_Project.elf elf32-littlearm)
  .debug_ranges  0x00000380       0x90 ./src/COTS/MCAL/EXTI/EXTI_program.o
  .debug_ranges  0x00000410       0x50 ./src/COTS/MCAL/ADC/ADC_program.o
  .debug_ranges  0x00000460       0x18 ./src/COTS/HAL/LDR/LDR_program.o
- .debug_ranges  0x00000478       0xa8 ./src/COTS/HAL/LCD/LCD_program.o
- .debug_ranges  0x00000520       0x18 ./src/_initialize_hardware.o
- .debug_ranges  0x00000538       0x10 ./src/main.o
+ .debug_ranges  0x00000478       0xf0 ./src/COTS/HAL/LCD/LCD_program.o
+ .debug_ranges  0x00000568       0x18 ./src/_initialize_hardware.o
+ .debug_ranges  0x00000580       0x10 ./src/main.o
