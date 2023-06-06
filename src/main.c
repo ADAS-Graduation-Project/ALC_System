@@ -69,7 +69,7 @@ int main( void )
 		/* Display brightness bar */
 		HLCD_vDispBrightnessBar( L_u16BrightnessLevel ) ;
 
-		/* Delay 1ms */
+		/* Delay 60ms */
 		MSysTick_vDelayMilliSec( 60 ) ;
 
 		/* Clear the old ADC conversion value */
@@ -79,7 +79,7 @@ int main( void )
 		HLCD_vClearChar( HLCD_LINE1, HLCD_Square7 ) ;
 		HLCD_vClear2ndRow( ) ;
 
-		/* Delay 1ms */
+		/* Delay 10ms */
 		MSysTick_vDelayMilliSec( 10 ) ;
 
 	}
