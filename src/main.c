@@ -1,7 +1,7 @@
-/* FILENAME: Testing_ALC_Demo_program
+/* FILENAME: main.c
 *  Author:  Ali El Bana
 *  Version:  V1.0
-*  DATE:   Fri 12/23/2022
+*  DATE:   Fri 6/1/2022
 */
 
 /************************************************************************/
