@@ -28,27 +28,34 @@
 int main( void )
 {
 
+	/* Define a variable to hold the ADC conversion value */
 	u16_t L_u16BrightnessLevel = INITIAL_ZERO ;
 
+	/* Initiate RCC for PORTA, PORTB and TIM1 */
 	MRCC_vInit( ) ;
-
 	MRCC_vEnablePeriphralCLK( RCC_AHB1, AHB1ENR_GPIOBEN ) ;
 	MRCC_vEnablePeriphralCLK( RCC_AHB1, AHB1ENR_GPIOAEN ) ;
 	MRCC_vEnablePeriphralCLK( RCC_APB2, APB2ENR_TIM1EN  ) ;
 
+	/* Lock GPIO pins specified for SW debug */
 	MGPIOx_vLockedPins( ) ;
 
+	/* Initiate STK timer */
 	MSysTick_vInit( ) ;
 
+	/* Initiate TIM1 and enable the counter */
 	MTIM1_vGeneratePWM( TIM1_CH3, PWM1, CENTER1,
 						PSC_VALUE, ARR_VALUE, CR_VALUE ) ;
 
 	MTIM1_vEnableCounter( ) ;
 
+	/* Initiate the LCD */
 	HLCD_vInit( ) ;
 
+	/* Initiate the LDR */
 	HLDR_vInit( ) ;
 
+	/* Display Do chars on the first line */
 	HLCD_vDispString( "Do:" ) ;
 
 	while( TRUE )
